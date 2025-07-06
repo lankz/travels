@@ -1,0 +1,25 @@
+<!-- Navigation Header -->
+<div class="navbar-header border-b border-gray-200 px-8 py-6">
+    <div class="relative flex items-center justify-center">
+        <!-- Back Button (when trip selected) -->
+        <button x-show="selectedTrip && !selectedPhoto" 
+                @click="selectedTrip = null; loadAllPhotos()"
+                class="absolute left-0 flex items-center text-gray-600 hover:text-gray-900 transition-colors duration-200">
+            <i class="fas fa-arrow-left"></i>
+        </button>
+        
+        <!-- Back Button (when photo selected) -->
+        <button x-show="selectedPhoto" 
+                @click="closePhotoViewer()" 
+                class="absolute left-0 flex items-center text-gray-600 hover:text-gray-900 transition-colors duration-200">
+            <i class="fas fa-arrow-left"></i>
+        </button>
+        
+        <!-- Main Title -->
+        <h1 class="text-2xl font-bold text-gray-900 flex items-center text-center">
+            <span x-show="!selectedTrip && !selectedPhoto"><i class="fas fa-map-marked-alt mr-2"></i>Travels</span>
+            <span x-show="selectedTrip && !selectedPhoto" x-text="selectedTrip ? getTripName(selectedTrip) : ''"></span>
+            <span x-show="selectedPhoto">Photo Details</span>
+        </h1>
+    </div>
+</div> 

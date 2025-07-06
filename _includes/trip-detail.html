@@ -1,0 +1,66 @@
+<!-- Selected Trip View -->
+<div x-show="selectedTrip">
+    {% for trip in site.data.trips %}
+    <div x-show="String(selectedTrip) === '{{ trip.id }}'">
+        <!-- Trip Info -->
+        {% if trip.description %}
+        <div class="mb-8">
+            <p class="text-gray-700 leading-relaxed">{{ trip.description }}</p>
+        </div>
+        {% endif %}
+        
+        <!-- Trip Tabs -->
+        <div class="mb-6">
+            <div class="flex space-x-1 bg-gray-100 p-1 rounded-lg">
+                <button @click="activeTab = 'timeline'" 
+                        :class="activeTab === 'timeline' ? 'bg-white text-gray-900 shadow-sm' : 'text-gray-600 hover:text-gray-900'"
+                        class="flex-1 px-4 py-2 text-sm font-medium rounded-md transition-all duration-200">
+                    <i class="fas fa-route mr-2"></i>Timeline
+                </button>
+                <button @click="activeTab = 'photos'" 
+                        :class="activeTab === 'photos' ? 'bg-white text-gray-900 shadow-sm' : 'text-gray-600 hover:text-gray-900'"
+                        class="flex-1 px-4 py-2 text-sm font-medium rounded-md transition-all duration-200">
+                    <i class="fas fa-images mr-2"></i>Photos
+                    <span class="ml-2 bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded-full font-medium">
+                        {{ trip.total_photos }}
+                    </span>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Timeline Tab Content -->
+        <div x-show="activeTab === 'timeline'" class="space-y-4">
+            <!-- Modern Timeline -->
+            <div class="relative">
+                <!-- Timeline line -->
+                <div class="absolute left-6 top-0 bottom-0 w-px bg-gradient-to-b from-gray-200 via-gray-300 to-gray-200"></div>
+                
+                {% assign current_date = '' %}
+                {% for segment in trip.segments %}
+                    <!-- Date divider (show when date changes) -->
+                    {% if segment.start_date and segment.start_date != current_date %}
+                        {% assign current_date = segment.start_date %}
+                        <div class="relative flex items-center mb-6 mt-8 first:mt-0">
+                            <!-- Date badge -->
+                            <div class="relative z-10 bg-white border border-gray-200 rounded-full px-4 py-2 shadow-sm">
+                                <div class="flex items-center text-sm font-medium text-gray-700">
+                                    <i class="fas fa-calendar text-xs mr-2 text-gray-400"></i>
+                                    {% assign date_obj = segment.start_date | date: "%Y-%m-%d" %}
+                                    {{ date_obj | date: "%B %d, %Y" }}
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                    
+                    {% include segment-card.html segment=segment %}
+                {% endfor %}
+            </div>
+        </div>
+        
+        <!-- Photos Tab Content -->
+        <div x-show="activeTab === 'photos'">
+            {% include photo-grid.html trip=trip %}
+        </div>
+    </div>
+    {% endfor %}
+</div> 

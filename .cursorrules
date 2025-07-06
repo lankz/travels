@@ -1,0 +1,116 @@
+# Jekyll Travel Map Rules
+
+## Overview
+This is a Jekyll static site that displays travel data as an interactive map with photos and trip details. The data is exported from the Python Flask app and displayed using modern web technologies.
+
+## Technologies Used
+- **Jekyll**: Static site generator with Liquid templating
+- **Alpine.js**: Reactive JavaScript framework for interactivity
+- **Tailwind CSS**: Utility-first CSS framework for styling
+- **Leaflet.js**: Interactive mapping library
+- **Font Awesome**: Icon library
+
+## Mobile Responsive Design
+- All layouts are mobile-first and responsive
+- Uses Tailwind's responsive utilities (sm:, md:, lg:, xl:)
+- Touch-friendly interactions and navigation
+- Optimized for both portrait and landscape orientations
+
+## File Structure
+
+### Layouts
+- `_layouts/default.html` - Base HTML template with head, navigation, and footer
+
+### Includes (Partials)
+- `_includes/photo-viewer.html` - Large photo display with navigation arrows
+- `_includes/navigation-header.html` - Reusable header with back buttons and titles
+- `_includes/trip-card.html` - Individual trip card component
+- `_includes/trip-list.html` - List of all trips
+- `_includes/trip-detail.html` - Selected trip view with timeline/photos tabs
+- `_includes/segment-card.html` - Individual segment card in timeline
+- `_includes/photo-grid.html` - Masonry photo grid layout
+- `_includes/photo-metadata.html` - Photo metadata sidebar with EXIF data
+
+### Assets
+- `assets/css/travel-map.css` - Custom styles and component definitions
+- `assets/js/travel-map.js` - Alpine.js application logic and map functionality
+- `assets/photos/` - Photo assets in three sizes:
+  - `thumbs/` - Small thumbnails for grids
+  - `medium/` - Medium size for previews
+  - `large/` - Full size for lightbox viewing
+- `assets/geojson/` - GeoJSON files for route visualization
+
+### Data Files
+- `_data/trips.json` - Trip data exported from Python app
+- `_data/photos.json` - Photo metadata exported from Python app
+- `_data/trips.yml` - YAML version of trips data
+- `_data/photos.yml` - YAML version of photos data
+
+### Content
+- `index.html` - Main page with map and trip interface
+- `_trips/` - Individual trip markdown files (optional)
+
+## Component System
+The site uses a component-based approach with Jekyll includes:
+
+### Photo Viewer Component
+- Full-screen photo display
+- Navigation arrows for browsing
+- Smooth transitions and animations
+- Mobile-optimized touch interactions
+
+### Trip Card Component
+- Shows trip name, date, description
+- Displays segment count and photo count badges
+- Clickable to select trip
+
+### Segment Card Component
+- Timeline visualization with colored icons
+- Shows segment type (drive, stay, hike, visit, ferry, flight)
+- Displays distance information
+- Embedded photo thumbnails for non-drive segments
+
+### Navigation Header Component
+- Context-aware back buttons
+- Dynamic titles based on current view
+- Consistent styling across all views
+
+## Alpine.js Application Structure
+Main application state managed in `travelApp()` function:
+- `selectedTrip` - Currently selected trip ID
+- `selectedPhoto` - Currently selected photo object
+- `activeTab` - Active tab in trip detail view ('timeline' or 'photos')
+- `allPhotos` - Array of all photo data
+- `map` - Leaflet map instance
+
+## Map Integration
+- Leaflet.js for interactive mapping
+- GeoJSON route visualization
+- Photo markers with popup previews
+- Automatic bounds fitting for trip routes
+
+## Data Flow
+1. Python app exports data to `_data/` directory
+2. Jekyll builds static site with data
+3. JavaScript loads data from `window.travelMapData`
+4. Alpine.js manages state and interactivity
+5. Leaflet displays map with routes and photos
+
+## Styling Guidelines
+- Use Tailwind utility classes for styling
+- Custom CSS only for complex components in `travel-map.css`
+- Consistent spacing with Tailwind's scale (4, 6, 8, 12, 16, etc.)
+- Color scheme: grays for text, blues for routes, purples for photos
+- Smooth transitions and hover effects throughout
+
+## Performance Considerations
+- Lazy loading for large images
+- Efficient photo sizing (thumbs/medium/large)
+- Minimal JavaScript bundle size
+- Optimized CSS with Tailwind purging
+- Static site generation for fast loading
+
+## Development Commands
+- `bundle exec jekyll serve` - Start development server
+- `bundle exec jekyll build` - Build static site
+- `bundle exec jekyll serve --livereload` - Development with live reload 

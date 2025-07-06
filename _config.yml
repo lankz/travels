@@ -1,0 +1,42 @@
+# Site settings
+title: "Travel Map - Adventures Around the World"
+description: "Interactive map of my travels with photos and stories"
+url: "https://your-username.github.io"
+baseurl: "/travels"
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+# GitHub Pages compatible plugins only
+safe: true
+incremental: false
+
+# Collections - none needed for single-view interface
+# collections:
+
+# Exclude from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+  - README.md
+
+# Timezone
+timezone: America/Los_Angeles
+
+# Permalink structure
+permalink: /:year/:month/:day/:title/
+
+# Sass configuration
+sass:
+  sass_dir: _sass
+  style: compressed 

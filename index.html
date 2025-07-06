@@ -1,0 +1,42 @@
+---
+layout: default
+title: "Travel Map"
+description: "Interactive map showing my travels around the world with photos and stories"
+---
+
+<div class="flex flex-col lg:flex-row w-full" x-data="travelApp()">
+    <!-- Map/Photo Viewer Column -->
+    <div class="w-full lg:w-2/3 relative order-2 lg:order-1">
+        <!-- Map View -->
+        <div x-show="!selectedPhoto" class="map-container w-full h-screen lg:h-full">
+            <div id="map" class="w-full h-full"></div>
+        </div>
+        
+        {% include photo-viewer.html %}
+    </div>
+
+    <!-- Trip List/Metadata Column -->
+    <div class="w-full lg:w-1/3 trip-list scroll-area order-1 lg:order-2">
+        <!-- Trip List View -->
+        <div x-show="!selectedPhoto" class="h-full flex flex-col">
+            {% include navigation-header.html %}
+            
+            <!-- Content Area -->
+            <div class="flex-1 overflow-y-auto p-8">
+                {% include trip-list.html %}
+                {% include trip-detail.html %}
+            </div>
+        </div>
+        
+        {% include photo-metadata.html %}
+    </div>
+</div>
+
+<script>
+// Inject data for external JavaScript
+window.travelMapData = {
+    photos: {{ site.data.photos | jsonify }},
+    trips: {{ site.data.trips | jsonify }},
+    baseurl: '{{ site.baseurl }}'
+};
+</script> 

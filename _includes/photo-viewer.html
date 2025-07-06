@@ -1,0 +1,31 @@
+<!-- Photo Viewer -->
+<div x-show="selectedPhoto" 
+     x-transition:enter="transition ease-out duration-300"
+     x-transition:enter-start="opacity-0 transform scale-95"
+     x-transition:enter-end="opacity-100 transform scale-100"
+     x-transition:leave="transition ease-in duration-200"
+     x-transition:leave-start="opacity-100 transform scale-100"
+     x-transition:leave-end="opacity-0 transform scale-95"
+     class="w-full h-screen lg:h-full photo-viewer flex items-center justify-center relative">
+    
+    <!-- Photo -->
+    <div class="w-full h-full flex items-center justify-center p-4 lg:p-8">
+        <img x-show="selectedPhoto" 
+             :src="selectedPhoto ? '{{ site.baseurl }}/assets/photos/large/' + selectedPhoto.filename : ''" 
+             :alt="selectedPhoto ? selectedPhoto.original_name : ''"
+             class="max-w-full max-h-full object-contain rounded-lg shadow-2xl">
+    </div>
+    
+    <!-- Navigation Arrows -->
+    <button @click="previousPhoto()" 
+            x-show="canNavigatePhotos()"
+            class="absolute left-2 lg:left-4 top-1/2 transform -translate-y-1/2 photo-nav-button text-white p-2 lg:p-3 rounded-full">
+        <i class="fas fa-chevron-left text-sm lg:text-lg"></i>
+    </button>
+    
+    <button @click="nextPhoto()" 
+            x-show="canNavigatePhotos()"
+            class="absolute right-2 lg:right-4 top-1/2 transform -translate-y-1/2 photo-nav-button text-white p-2 lg:p-3 rounded-full">
+        <i class="fas fa-chevron-right text-sm lg:text-lg"></i>
+    </button>
+</div> 

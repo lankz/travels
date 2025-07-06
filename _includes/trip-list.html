@@ -1,0 +1,6 @@
+<!-- All Trips View -->
+<div x-show="!selectedTrip" class="space-y-6">
+    {% for trip in site.data.trips %}
+        {% include trip-card.html trip=trip %}
+    {% endfor %}
+</div> 

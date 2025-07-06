@@ -1,0 +1,20 @@
+<!-- Photo Grid -->
+{% assign trip_photos = site.data.photos | where: "trip_id", include.trip.id %}
+{% if trip_photos.size > 0 %}
+<div class="masonry-container" style="column-count: 2; column-gap: 1rem; column-fill: balance;">
+    {% for photo in trip_photos %}
+    <div class="masonry-item cursor-pointer rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-200 mb-4"
+         style="display: inline-block; width: 100%; break-inside: avoid;"
+         @click="focusOnPhoto(allPhotos.find(p => p.id === {{ photo.id }}))">
+        <img src="{{ site.baseurl }}/assets/photos/thumbs/{{ photo.filename }}" 
+             alt="{{ photo.original_name }}"
+             class="w-full h-auto object-cover">
+    </div>
+    {% endfor %}
+</div>
+{% else %}
+<div class="text-center py-12 text-gray-500">
+    <i class="fas fa-images text-4xl mb-4"></i>
+    <p>No photos in this trip yet</p>
+</div>
+{% endif %} 

@@ -1,0 +1,4 @@
+# Local development configuration
+# This file overrides _config.yml settings for local development
+url: "http://localhost:4000"
+baseurl: "" 

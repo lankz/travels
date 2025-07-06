@@ -1,0 +1,67 @@
+<!-- Segment card -->
+<div class="relative flex items-start mb-6">
+    <!-- Timeline dot -->
+    <div class="relative z-10 w-12 h-12 rounded-full flex items-center justify-center shadow-sm border-2 border-white
+                {% case include.segment.type %}
+                {% when 'drive' %}bg-blue-500 text-white
+                {% when 'stay' %}bg-green-500 text-white
+                {% when 'hike' %}bg-orange-500 text-white
+                {% when 'visit' %}bg-purple-500 text-white
+                {% when 'ferry' %}bg-cyan-500 text-white
+                {% when 'flight' %}bg-red-500 text-white
+                {% endcase %}">
+        <i class="{% case include.segment.type %}
+                  {% when 'drive' %}fas fa-car
+                  {% when 'stay' %}fas fa-bed
+                  {% when 'hike' %}fas fa-hiking
+                  {% when 'visit' %}fas fa-eye
+                  {% when 'ferry' %}fas fa-ship
+                  {% when 'flight' %}fas fa-plane
+                  {% endcase %} text-sm"></i>
+    </div>
+    
+    <!-- Modern content card -->
+    <div class="ml-6 flex-1 min-w-0">
+        <div class="bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-200 p-5 border border-gray-100">
+            <!-- Header -->
+            <div class="flex items-start justify-between">
+                <div class="flex-1 min-w-0">
+                    <h4 class="text-lg font-semibold text-gray-900 leading-tight">{{ include.segment.title }}</h4>
+                    <!-- Meta info (distance only, no dates) -->
+                    {% if include.segment.distance_km %}
+                    <div class="flex items-center mt-2">
+                        <div class="flex items-center text-sm text-gray-500">
+                            <i class="fas fa-road text-xs mr-1.5"></i>
+                            <span class="font-medium">{{ include.segment.distance_km | round: 1 }} km</span>
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+            
+            <!-- Photos section (only for non-drive segments) -->
+            {% unless include.segment.type == 'drive' %}
+            {% assign segment_photos = site.data.photos | where: "segment_id", include.segment.id %}
+            {% if segment_photos.size > 0 %}
+            <div class="mt-4 pt-4 border-t border-gray-100">
+                <div class="grid grid-cols-4 gap-2">
+                    {% for photo in segment_photos limit: 4 %}
+                    <div class="aspect-square rounded-lg overflow-hidden bg-gray-100 hover:scale-105 transition-transform duration-200 cursor-pointer"
+                         @click.stop="focusOnPhoto(allPhotos.find(p => p.id === {{ photo.id }}))">
+                        <img src="{{ site.baseurl }}/assets/photos/thumbs/{{ photo.filename }}" 
+                             alt="{{ photo.original_name }}"
+                             class="w-full h-full object-cover">
+                    </div>
+                    {% endfor %}
+                </div>
+                {% if segment_photos.size > 4 %}
+                <p class="text-xs text-gray-400 mt-2 font-medium">
+                    +{{ segment_photos.size | minus: 4 }} more photos
+                </p>
+                {% endif %}
+            </div>
+            {% endif %}
+            {% endunless %}
+        </div>
+    </div>
+</div> 

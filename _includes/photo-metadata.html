@@ -1,0 +1,103 @@
+<!-- Photo Metadata View -->
+<div x-show="selectedPhoto" 
+     x-transition:enter="transition ease-out duration-300"
+     x-transition:enter-start="opacity-0 transform translate-x-4"
+     x-transition:enter-end="opacity-100 transform translate-x-0"
+     x-transition:leave="transition ease-in duration-200"
+     x-transition:leave-start="opacity-100 transform translate-x-0"
+     x-transition:leave-end="opacity-0 transform translate-x-4"
+     class="h-full flex flex-col">
+    
+    {% include navigation-header.html %}
+    
+    <!-- Content Area -->
+    <div class="flex-1 overflow-y-auto p-8">
+        <!-- Photo Info -->
+        <div x-show="selectedPhoto" class="space-y-6">
+            <!-- Basic Info -->
+            <div class="metadata-card rounded-2xl p-6 shadow-sm">
+                <h3 class="text-lg font-semibold text-gray-900 mb-4 flex items-center">
+                    <i class="fas fa-info-circle mr-2"></i>
+                    Basic Information
+                </h3>
+                <div class="space-y-3">
+                    <div class="flex justify-between items-center">
+                        <span class="text-gray-600">Filename:</span>
+                        <span class="font-medium text-gray-900" x-text="selectedPhoto ? selectedPhoto.original_name : ''"></span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="text-gray-600">Date Taken:</span>
+                        <span class="font-medium text-gray-900" x-text="selectedPhoto ? (selectedPhoto.date_taken || 'Unknown') : ''"></span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="text-gray-600">File Size:</span>
+                        <span class="font-medium text-gray-900" x-text="selectedPhoto ? formatFileSize(selectedPhoto.file_size) : ''"></span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Location Info -->
+            <div x-show="selectedPhoto && (selectedPhoto.latitude || selectedPhoto.longitude || getSegmentForPhoto(selectedPhoto))" 
+                 class="metadata-card rounded-2xl p-6 shadow-sm">
+                <h3 class="text-lg font-semibold text-gray-900 mb-4 flex items-center">
+                    <i class="fas fa-map-marker-alt mr-2"></i>
+                    Location
+                </h3>
+                <div class="space-y-3">
+                    <div class="flex justify-between items-center">
+                        <span class="text-gray-600">Latitude:</span>
+                        <span class="font-medium text-gray-900" x-text="getPhotoLatitude(selectedPhoto)"></span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="text-gray-600">Longitude:</span>
+                        <span class="font-medium text-gray-900" x-text="getPhotoLongitude(selectedPhoto)"></span>
+                    </div>
+                    <div x-show="selectedPhoto && selectedPhoto.altitude" class="flex justify-between items-center">
+                        <span class="text-gray-600">Altitude:</span>
+                        <span class="font-medium text-gray-900" x-text="selectedPhoto ? selectedPhoto.altitude + 'm' : ''"></span>
+                    </div>
+                    <div x-show="selectedPhoto && !selectedPhoto.latitude && !selectedPhoto.longitude && getSegmentForPhoto(selectedPhoto)" 
+                         class="text-xs text-gray-500 mt-2">
+                        <i class="fas fa-info-circle mr-1"></i>
+                        Location from segment
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Camera Info -->
+            <div x-show="selectedPhoto && (selectedPhoto.camera_make || selectedPhoto.camera_model)" 
+                 class="metadata-card rounded-2xl p-6 shadow-sm">
+                <h3 class="text-lg font-semibold text-gray-900 mb-4 flex items-center">
+                    <i class="fas fa-camera mr-2"></i>
+                    Camera Information
+                </h3>
+                <div class="space-y-3">
+                    <div x-show="selectedPhoto && selectedPhoto.camera_make" class="flex justify-between items-center">
+                        <span class="text-gray-600">Make:</span>
+                        <span class="font-medium text-gray-900" x-text="selectedPhoto ? selectedPhoto.camera_make : ''"></span>
+                    </div>
+                    <div x-show="selectedPhoto && selectedPhoto.camera_model" class="flex justify-between items-center">
+                        <span class="text-gray-600">Model:</span>
+                        <span class="font-medium text-gray-900" x-text="selectedPhoto ? selectedPhoto.camera_model : ''"></span>
+                    </div>
+                    <div x-show="selectedPhoto && selectedPhoto.focal_length" class="flex justify-between items-center">
+                        <span class="text-gray-600">Focal Length:</span>
+                        <span class="font-medium text-gray-900" x-text="selectedPhoto ? selectedPhoto.focal_length + 'mm' : ''"></span>
+                    </div>
+                    <div x-show="selectedPhoto && selectedPhoto.aperture" class="flex justify-between items-center">
+                        <span class="text-gray-600">Aperture:</span>
+                        <span class="font-medium text-gray-900" x-text="selectedPhoto ? 'f/' + selectedPhoto.aperture : ''"></span>
+                    </div>
+                    <div x-show="selectedPhoto && selectedPhoto.shutter_speed" class="flex justify-between items-center">
+                        <span class="text-gray-600">Shutter Speed:</span>
+                        <span class="font-medium text-gray-900" x-text="selectedPhoto ? selectedPhoto.shutter_speed + 's' : ''"></span>
+                    </div>
+                    <div x-show="selectedPhoto && selectedPhoto.iso_speed" class="flex justify-between items-center">
+                        <span class="text-gray-600">ISO:</span>
+                        <span class="font-medium text-gray-900" x-text="selectedPhoto ? selectedPhoto.iso_speed : ''"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> 

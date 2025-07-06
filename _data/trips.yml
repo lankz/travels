@@ -1,0 +1,174 @@
+- id: 4
+  name: Trip to Hobart Beach
+  start_date: '2020-09-26'
+  end_date: '2020-09-29'
+  created_at: '2025-07-07T08:52:14.401415'
+  segments:
+  - id: 13
+    title: Sydney to Bournda National Park
+    type: drive
+    location: null
+    start_date: '2020-09-26'
+    end_date: '2020-09-26'
+    order: 1
+    created_at: '2025-07-07T08:53:09.044302'
+    photos: []
+    photo_count: 0
+    geojson_filename: 188f2e6f-1721-497d-8526-9840604a531a.geojson
+    distance_km: 545.33
+  - id: 15
+    title: Hobart Beach Campground
+    type: stay
+    location: -36.796727755528806, 149.94000205443095
+    start_date: '2020-09-26'
+    end_date: '2020-09-29'
+    order: 2
+    created_at: '2025-07-07T08:56:54.960761'
+    photos:
+    - id: 3
+      filename: 1ff2eece-fd53-4d88-a61e-ce0cea3f5e35.jpg
+      original_name: 20200927_120706.jpg
+      date_taken: '2020-09-27T12:07:06'
+      latitude: -36.82097004701463
+      longitude: 149.92457881173289
+    photo_count: 1
+    geojson_filename: null
+    distance_km: null
+  - id: 14
+    title: Bournda National Park to Sydney
+    type: drive
+    location: null
+    start_date: '2020-09-29'
+    end_date: '2020-09-29'
+    order: 3
+    created_at: '2025-07-07T08:53:35.941410'
+    photos: []
+    photo_count: 0
+    geojson_filename: 9eeaf55d-305e-47eb-b4e1-c4b995502174.geojson
+    distance_km: 471.69
+  total_photos: 1
+  segment_count: 3
+- id: 3
+  name: Trip to Dangars Gorge
+  start_date: '2020-07-12'
+  end_date: '2020-07-18'
+  created_at: '2025-07-07T08:07:55.942771'
+  segments:
+  - id: 8
+    title: Sydney to Gloucester River
+    type: drive
+    location: null
+    start_date: '2020-07-12'
+    end_date: '2020-07-12'
+    order: 1
+    created_at: '2025-07-07T08:08:59.370383'
+    photos: []
+    photo_count: 0
+    geojson_filename: 94cb941e-8a62-4d2b-85cc-ee79dd9246bf.geojson
+    distance_km: 263.65
+  - id: 9
+    title: Gloucester River to Dangars Gorge
+    type: drive
+    location: null
+    start_date: '2020-07-14'
+    end_date: '2020-07-14'
+    order: 2
+    created_at: '2025-07-07T08:09:33.763327'
+    photos: []
+    photo_count: 0
+    geojson_filename: 83c364be-bee6-4abd-996d-b7dd5579c472.geojson
+    distance_km: 349.55
+  - id: 12
+    title: Dangars Gorge Campground
+    type: stay
+    location: -30.672125433555397, 151.7263055254974
+    start_date: '2020-07-14'
+    end_date: '2020-07-16'
+    order: 3
+    created_at: '2025-07-07T08:22:33.904465'
+    photos:
+    - id: 2
+      filename: cef616ef-d2bc-4228-ae01-de9971c776b5.jpg
+      original_name: 20200715_103914.jpg
+      date_taken: '2020-07-15T10:39:14'
+      latitude: null
+      longitude: null
+    photo_count: 1
+    geojson_filename: null
+    distance_km: null
+  - id: 10
+    title: Dangars Gorge to Towarri National Park
+    type: drive
+    location: null
+    start_date: '2020-07-16'
+    end_date: '2020-07-16'
+    order: 4
+    created_at: '2025-07-07T08:10:33.981435'
+    photos: []
+    photo_count: 0
+    geojson_filename: 5cae2d7e-bf31-42f8-b6cc-ca4759f24f62.geojson
+    distance_km: 249.51
+  - id: 11
+    title: Towarri National Park to Sydney
+    type: drive
+    location: null
+    start_date: '2020-07-18'
+    end_date: '2020-07-18'
+    order: 5
+    created_at: '2025-07-07T08:10:57.979890'
+    photos: []
+    photo_count: 0
+    geojson_filename: ccbba472-f0cc-4d8c-b153-f94780e079a7.geojson
+    distance_km: 272.91
+  total_photos: 1
+  segment_count: 5
+- id: 2
+  name: Trip to Wallingat
+  start_date: '2020-06-06'
+  end_date: '2020-06-08'
+  created_at: '2025-07-07T07:23:07.308235'
+  segments:
+  - id: 5
+    title: Drive to Wallingat National Park
+    type: drive
+    location: null
+    start_date: '2020-06-06'
+    end_date: '2020-06-06'
+    order: 1
+    created_at: '2025-07-07T07:26:02.422054'
+    photos: []
+    photo_count: 0
+    geojson_filename: 46722e98-b80b-401a-a544-bad7ff071d08.geojson
+    distance_km: 274.33
+  - id: 6
+    title: Wallingat River Campground
+    type: stay
+    location: -32.32752635563325, 152.40284659631317
+    start_date: '2020-06-06'
+    end_date: '2020-06-08'
+    order: 2
+    created_at: '2025-07-07T07:27:55.758287'
+    photos:
+    - id: 1
+      filename: 61fa36c9-d0c8-48b0-8ff2-a4ad90768a8e.jpg
+      original_name: 20200607_130549.jpg
+      date_taken: '2020-06-07T13:05:49'
+      latitude: null
+      longitude: null
+    photo_count: 1
+    geojson_filename: null
+    distance_km: null
+  - id: 7
+    title: Wallingat National Park to Sydney
+    type: drive
+    location: null
+    start_date: '2020-06-08'
+    end_date: '2020-06-08'
+    order: 3
+    created_at: '2025-07-07T07:47:18.694011'
+    photos: []
+    photo_count: 0
+    geojson_filename: 636a53db-ba37-44a4-b9fc-05d4acd1b7ef.geojson
+    distance_km: 274.66
+  total_photos: 1
+  segment_count: 3
